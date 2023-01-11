@@ -1,0 +1,12 @@
+ {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <h3>system messages:</h3>
+            
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>    
+                {% endfor %}
+            
+        {% endif %}
+  {% endwith %}

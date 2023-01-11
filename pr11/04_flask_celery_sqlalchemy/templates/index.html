@@ -1,0 +1,36 @@
+{% extends "default.html" %} 
+{% block content %}
+<h1>Flask + Celery + SQL Alchemy</h1>
+<h2>Posledních 10 záznamů v databázi</h2>
+
+<div id="loader"></div>
+
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">data</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in records %}
+        <tr>
+            <td>{{ record.id }}</td>
+            <td>{{ record.data }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>    
+
+
+<a href="{{ url_for('task') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Send Celery Task</a>
+<a href="{{ url_for('task_slow') }}" class="btn btn-primary btn-lg active" id="buttonSlow" role="button" aria-pressed="true">Send Sync Task</a>
+
+<script type="text/javascript">
+    document.getElementById('buttonSlow').addEventListener('click', function(e) {
+          document.getElementById("loader").style.display = "block";
+          document.getElementById("myTable").style.display = "none";
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "default.html" %}
+{% block content %}
+    <h1>Já sem admin a kdo je víc?</h1>
+    <p> Dva admini...</p>
+    {% for row in data %}
+        <p>{{ row }}</p>
+    {% endfor %}
+    <p>
+         <a href="/logout/" class="btn btn-primary btn-lg" role="button">Logout</a>
+    </p>
+
+
+{% endblock %}
